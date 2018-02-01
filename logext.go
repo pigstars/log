@@ -262,10 +262,10 @@ func (l *Logger) Warn(v ...interface{}) { l.Output("", Lwarn, 2, fmt.Sprintln(v.
 // -----------------------------------------
 
 func (l *Logger) Errorf(format string, v ...interface{}) {
-	l.Output("", Lerror, 2, fmt.Sprintf(format, v...))
+	l.Output("", Lerror, 3, fmt.Sprintf(format, v...))
 }
 
-func (l *Logger) Error(v ...interface{}) { l.Output("", Lerror, 2, fmt.Sprintln(v...)) }
+func (l *Logger) Error(v ...interface{}) { l.Output("", Lerror, 3, fmt.Sprintln(v...)) }
 
 // -----------------------------------------
 
