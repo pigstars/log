@@ -1,10 +1,11 @@
 package log
 
 import (
+    "os"
 	"testing"
 )
 
-func TestLog(t *testing.T) {
+func TestLogStd(t *testing.T) {
 
 	SetOutputLevel(Ldebug)
 
@@ -33,4 +34,33 @@ func TestLog(t *testing.T) {
 
 	Errorf("Error: foo\n")
 	Error("Error: foo")
+}
+
+func TestLogNew(t *testing.T){
+    Logger := New(os.Stderr,"", Llevel|LstdFlags|Lshortfile, 2)
+	Logger.Debugf("Debug: foo\n")
+	Logger.Debug("Debug: foo")
+
+	Logger.Infof("Info: foo\n")
+	Logger.Info("Info: foo")
+
+	Logger.Warnf("Warn: foo\n")
+	Logger.Warn("Warn: foo")
+
+	Logger.Errorf("Error: foo\n")
+	Logger.Error("Error: foo")
+
+	Logger.SetOutputLevel(Linfo)
+
+	Logger.Debugf("Debug: foo\n")
+	Logger.Debug("Debug: foo")
+
+	Logger.Infof("Info: foo\n")
+	Logger.Info("Info: foo")
+
+	Logger.Warnf("Warn: foo\n")
+	Logger.Warn("Warn: foo")
+
+	Logger.Errorf("Error: foo\n")
+	Logger.Error("Error: foo")
 }
